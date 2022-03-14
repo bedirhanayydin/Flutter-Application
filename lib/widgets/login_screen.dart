@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 200),
+              padding: const EdgeInsets.only(top: 160),
               child: Text(
                 'Log In',
                 textAlign: TextAlign.center,
@@ -39,8 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              width: 50,
-              height: 50,
+              width: 10,
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(40.0),
