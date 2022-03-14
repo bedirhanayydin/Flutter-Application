@@ -17,10 +17,10 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Container(
         decoration: BoxDecoration(
           color: Color(0xff123456),
-          /* image: DecorationImage(
+          image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage('assets/images/test.jpg'),
-          ),*/
+          ),
         ),
         child: Column(
           children: [
