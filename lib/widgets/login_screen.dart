@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/widgets/feed_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -81,7 +82,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   minimumSize: Size(350, 50),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return FeedScreen();
+                  }));
+                },
                 child: Text(
                   'Log In',
                 ),
