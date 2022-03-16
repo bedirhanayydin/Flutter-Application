@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/widgets/feed_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -16,12 +17,18 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        decoration: BoxDecoration(
-          color: Color(0xff123456),
-          /* image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage('assets/images/test.jpg'),
-          ),*/
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.purpleAccent,
+              Colors.amber,
+              Colors.blue,
+            ],
+          ),
         ),
         child: Column(
           children: [
@@ -72,34 +79,88 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 100),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
+            SizedBox(height: 18),
+            GestureDetector(
+              child: Container(
+                alignment: Alignment.center,
+                width: 270,
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                    gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          Color(0xFF8A2387),
+                          Color(0xFFE94057),
+                          Color(0xFFF27121),
+                        ])),
+                child: const Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 245, 244, 244),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
-                  minimumSize: Size(350, 50),
-                ),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FeedScreen();
-                  }));
-                },
-                child: Text(
-                  'Log In',
                 ),
               ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return FeedScreen();
+                }));
+              },
             ),
             Padding(
               padding: const EdgeInsets.all(13.0),
               child: Text(
                 'Forgot your password?',
-                style:
-                    TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),
               ),
-            )
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              "Or Login using Social Media Account",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              color: Colors.white38,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(FontAwesomeIcons.facebook,
+                          color: Colors.blue)),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        FontAwesomeIcons.google,
+                        color: Colors.redAccent,
+                      )),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        FontAwesomeIcons.twitter,
+                        color: Color.fromARGB(255, 29, 115, 228),
+                      )),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        FontAwesomeIcons.linkedinIn,
+                        color: Colors.green,
+                      ))
+                ],
+              ),
+            ),
           ],
         ),
       ),
