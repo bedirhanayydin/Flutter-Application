@@ -270,7 +270,7 @@ class FeedScreen extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          'LoremIpsum Dolar LoremIpsum Dolar \nSit Amet',
+                          'LoremIpsum Dolar Ipsum Dolar \nSit Amet',
                           style: TextStyle(
                               fontWeight: FontWeight.normal, fontSize: 17),
                         ),
