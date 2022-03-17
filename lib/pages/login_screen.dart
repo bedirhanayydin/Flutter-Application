@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_3/pages/feed_screen.dart';
 import 'package:flutter_application_3/pages/signup_screen.dart';
+import 'package:flutter_application_3/services/auth_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,6 +15,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.all(40.0),
               child: TextField(
+                controller: _emailController,
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   filled: true,
@@ -66,6 +72,14 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.all(40.0),
               child: TextField(
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                controller: _passwordController,
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   filled: true,
@@ -105,9 +119,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return FeedScreen();
-                }));
+                _emailController.text.isEmpty ||
+                        _passwordController.text.isEmpty == true
+                    ? ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text(
+                              'Please do not leave the fields blank.'),
+                        ),
+                      )
+                    : _authService
+                        .signIn(_emailController.text,
+                            _passwordController.text.toString())
+                        .then(
+                        (value) {
+                          return Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) => FeedScreen()),
+                            ),
+                          );
+                        },
+                      );
               },
             ),
             Padding(

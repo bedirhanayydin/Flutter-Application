@@ -1,6 +1,9 @@
 // ignore_for_file: no_logic_in_create_state, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_application_3/pages/login_screen.dart';
+import 'package:flutter_application_3/services/auth_service.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -10,6 +13,13 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _rePasswordController = TextEditingController();
+
+  AuthService _authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -52,6 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextField(
+                            controller: _usernameController,
                             style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
@@ -80,6 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           height: size.height * 0.02,
                         ),
                         TextField(
+                            controller: _emailController,
                             style: TextStyle(
                               color: Color.fromARGB(255, 8, 0, 0),
                             ),
@@ -108,6 +120,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           height: size.height * 0.02,
                         ),
                         TextField(
+                            controller: _passwordController,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            enableSuggestions: false,
+                            autocorrect: false,
                             style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
@@ -135,7 +154,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(
                           height: size.height * 0.02,
                         ),
-                        const TextField(
+                        TextField(
+                            controller: _rePasswordController,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ],
+                            enableSuggestions: false,
+                            autocorrect: false,
                             style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
@@ -164,7 +190,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           height: size.height * 0.08,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            _usernameController.text.isEmpty ||
+                                    _emailController.text.isEmpty ||
+                                    _rePasswordController.text.isEmpty ||
+                                    _passwordController.text.isEmpty == true
+                                ? ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: const Text(
+                                          'Please do not leave the fields blank.'),
+                                    ),
+                                  )
+                                : _authService
+                                    .createPerson(
+                                        _usernameController.text,
+                                        _emailController.text,
+                                        _passwordController.text.toString())
+                                    .then(
+                                    (value) {
+                                      return Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: ((context) => LoginScreen()),
+                                        ),
+                                      );
+                                    },
+                                  );
+                          },
                           child: Container(
                             padding: EdgeInsets.symmetric(vertical: 5),
                             decoration: BoxDecoration(
