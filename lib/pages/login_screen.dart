@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/widgets/feed_screen.dart';
+import 'package:flutter_application_3/pages/feed_screen.dart';
+import 'package:flutter_application_3/pages/signup_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,8 +18,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -33,9 +32,9 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 160),
+              padding: const EdgeInsets.only(top: 130),
               child: Text(
-                'Log In',
+                'Sign In',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -97,9 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Padding(
                   padding: EdgeInsets.all(12.0),
                   child: Text(
-                    'Login',
+                    'Sign In',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 245, 244, 244),
+                        color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
@@ -112,20 +111,37 @@ class _LoginScreenState extends State<LoginScreen> {
               },
             ),
             Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: Text(
-                'Forgot your password?',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
+              padding: const EdgeInsets.only(top: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(height: 3, width: 130, color: Colors.white),
+                  GestureDetector(
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                    onTap: (() {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => SignUpScreen()),
+                        ),
+                      );
+                    }),
+                  ),
+                  Container(height: 3, width: 130, color: Colors.white),
+                ],
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             const Text(
-              "Or Login using Social Media Account",
+              "Or Login using Social Media Account\n                       NOT ACTİVE",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(
