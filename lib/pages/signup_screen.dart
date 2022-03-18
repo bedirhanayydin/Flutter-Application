@@ -18,7 +18,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
 
-  AuthService _authService = AuthService();
+  final AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -203,9 +203,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   )
                                 : _authService
                                     .createPerson(
-                                        _usernameController.text,
-                                        _emailController.text,
-                                        _passwordController.text.toString())
+                                        _usernameController.text.trim(),
+                                        _emailController.text.trim(),
+                                        _passwordController.text
+                                            .toString()
+                                            .trim())
                                     .then(
                                     (value) {
                                       return Navigator.push(
@@ -221,7 +223,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             padding: EdgeInsets.symmetric(vertical: 5),
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    color: Color.fromARGB(255, 25, 0, 255),
                                     width: 2),
                                 //color: colorPrimaryShade,
                                 borderRadius:
@@ -232,7 +234,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   child: Text(
                                 "Kaydet",
                                 style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
+                                  color: Color.fromARGB(255, 25, 0, 255),
                                   fontSize: 20,
                                 ),
                               )),

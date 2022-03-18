@@ -7,6 +7,9 @@ class FeedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var height = size.height;
+    var width = size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -83,7 +86,7 @@ class FeedScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             SizedBox(
-                              width: 165,
+                              width: width / 2,
                             ),
                             Text(
                               '8m ago',
@@ -95,10 +98,11 @@ class FeedScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          height: 5,
+                          height: height / 70,
                         ),
                         Text(
                           'LoremIpsum Dolar LoremIpsum Dolar \nSit Amet',
+                          textAlign: TextAlign.start,
                           style: TextStyle(
                               fontWeight: FontWeight.normal, fontSize: 17),
                         ),

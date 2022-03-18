@@ -130,8 +130,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       )
                     : _authService
-                        .signIn(_emailController.text,
-                            _passwordController.text.toString())
+                        .signIn(_emailController.text.trim(),
+                            _passwordController.text.toString().trim())
                         .then(
                         (value) {
                           return Navigator.push(
