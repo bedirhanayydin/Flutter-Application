@@ -210,12 +210,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             .trim())
                                     .then(
                                     (value) {
-                                      return Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: ((context) => LoginScreen()),
-                                        ),
-                                      );
+                                      return Navigator.of(context)
+                                          .pushAndRemoveUntil(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoginScreen()),
+                                              (Route<dynamic> route) => false);
                                     },
                                   );
                           },

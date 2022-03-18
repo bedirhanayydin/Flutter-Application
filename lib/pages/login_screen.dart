@@ -18,7 +18,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();
+
   var size, height;
+
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -134,12 +136,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             _passwordController.text.toString().trim())
                         .then(
                         (value) {
-                          return Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => FeedScreen()),
-                            ),
-                          );
+                          return Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => FeedScreen()),
+                              (Route<dynamic> route) => false);
                         },
                       );
               },
