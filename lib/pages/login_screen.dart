@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, deprecated_member_use
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, deprecated_member_use, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,9 +17,12 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  AuthService _authService = AuthService();
+  final AuthService _authService = AuthService();
+  var size, height;
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
+    height = size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
@@ -50,8 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              width: 10,
-              height: 10,
+              height: height / 45,
             ),
             Padding(
               padding: const EdgeInsets.all(40.0),
@@ -92,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 18),
+            SizedBox(height: height / 30),
             GestureDetector(
               child: Container(
                 alignment: Alignment.center,
@@ -143,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 25.0),
+              padding: const EdgeInsets.only(top: 35),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -169,8 +171,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 40,
+            SizedBox(
+              height: height / 10,
             ),
             const Text(
               "Or Login using Social Media Account\n                       NOT ACTİVE",
