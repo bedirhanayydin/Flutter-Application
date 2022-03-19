@@ -232,8 +232,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               padding: const EdgeInsets.all(5.0),
                               child: Center(
                                   child: Text(
-                                "Kaydet",
+                                "Submit",
                                 style: TextStyle(
+                                  fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(255, 25, 0, 255),
                                   fontSize: 20,
                                 ),

@@ -20,6 +20,16 @@ class _LoginScreenState extends State<LoginScreen> {
   final AuthService _authService = AuthService();
 
   var size, height;
+  @override
+  void initState() {
+    super.initState();
+    //initialization();
+  }
+
+  /* void initialization() async {
+    await Future.delayed(const Duration(seconds: 2));
+    FlutterNativeSplash.remove();
+  } */
 
   @override
   Widget build(BuildContext context) {
