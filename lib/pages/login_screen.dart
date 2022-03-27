@@ -65,10 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(
-              height: height / 45,
+              height: height / 25,
             ),
             Padding(
-              padding: const EdgeInsets.all(40.0),
+              padding: EdgeInsets.all(height / 50),
               child: TextField(
                 controller: _emailController,
                 textAlign: TextAlign.start,
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(40.0),
+              padding: EdgeInsets.all(height / 50),
               child: TextField(
                 obscureText: true,
                 enableSuggestions: false,
@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(height: height / 30),
+            SizedBox(height: height / 10),
             GestureDetector(
               child: Container(
                 alignment: Alignment.center,
@@ -121,8 +121,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           Color(0xFFE94057),
                           Color(0xFFF27121),
                         ])),
-                child: const Padding(
-                  padding: EdgeInsets.all(12.0),
+                child: Padding(
+                  padding: EdgeInsets.all(height / 60),
                   child: Text(
                     'Sign In',
                     style: TextStyle(

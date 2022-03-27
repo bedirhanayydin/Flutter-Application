@@ -15,7 +15,7 @@ class FeedScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: Color.fromARGB(255, 255, 174, 0),
         elevation: 0.0, //çizgiyi kaldırdım
         title: Row(
           children: <Widget>[
@@ -86,50 +86,6 @@ class FeedScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             SizedBox(
-                              width: width / 2,
-                            ),
-                            Text(
-                              '8m ago',
-                              style: TextStyle(
-                                  color: Color.fromARGB(87, 0, 0, 0),
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 17),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: height / 70,
-                        ),
-                        Text(
-                          'LoremIpsum Dolar LoremIpsum Dolar \nSit Amet',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 17),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Icon(
-                        Icons.square,
-                        color: Color.fromARGB(82, 158, 158, 158),
-                        size: 80,
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Row(
-                          children: <Widget>[
-                            Text(
-                              'Header',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                            SizedBox(
                               width: 165,
                             ),
                             Text(
@@ -274,7 +230,93 @@ class FeedScreen extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          'LoremIpsum Dolar Ipsum Dolar \nSit Amet',
+                          'LoremIpsum Dolar LoremIpsum Dolar \nSit Amet',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 17),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Icon(
+                        Icons.square,
+                        color: Color.fromARGB(82, 158, 158, 158),
+                        size: 80,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'Header',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 165,
+                            ),
+                            Text(
+                              '8m ago',
+                              style: TextStyle(
+                                  color: Color.fromARGB(87, 0, 0, 0),
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 17),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'LoremIpsum Dolar LoremIpsum Dolar \nSit Amet',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 17),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Icon(
+                        Icons.square,
+                        color: Color.fromARGB(82, 158, 158, 158),
+                        size: 80,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'Header',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 165,
+                            ),
+                            Text(
+                              '8m ago',
+                              style: TextStyle(
+                                  color: Color.fromARGB(87, 0, 0, 0),
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 17),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'LoremIpsum Dolar LoremIpsum Dolar \nSit Amet',
                           style: TextStyle(
                               fontWeight: FontWeight.normal, fontSize: 17),
                         ),
@@ -288,38 +330,39 @@ class FeedScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30), topLeft: Radius.circular(10)),
-            boxShadow: [
-              BoxShadow(
-                  color: Color.fromARGB(134, 0, 0, 0),
-                  spreadRadius: 0,
-                  blurRadius: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30), topLeft: Radius.circular(10)),
+          boxShadow: [
+            BoxShadow(
+                color: Color.fromARGB(134, 0, 0, 0),
+                spreadRadius: 0,
+                blurRadius: 10),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
+          ),
+          child: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: ('Favourite'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.all_out_outlined),
+                label: ('Explore'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.add_box),
+                label: ('Add Feed'),
+              ),
             ],
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30.0),
-              topRight: Radius.circular(30.0),
-            ),
-            child: BottomNavigationBar(
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: ('Favourite'),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.all_out_outlined),
-                  label: ('Explore'),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.add_box),
-                  label: ('Add Feed'),
-                ),
-              ],
-            ),
-          )),
+        ),
+      ),
     );
   }
 }
